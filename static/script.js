@@ -31,4 +31,26 @@ async function deleteTask(id) {
     fetchTasks();
 }
 
+// Get input field
+const input = document.getElementById('taskInput');
+
+// Listen for key press
+input.addEventListener('keypress', function(event) {
+
+    if (event.key === 'Enter') {
+        event.preventDefault();
+
+        // Remove spaces from start & end
+        const value = input.value.trim();
+
+        // If empty after trimming → DO NOTHING
+        if (value === "") {
+            return;
+        }
+
+        // Otherwise add task
+        addTask();
+    }
+});
+
 fetchTasks();
